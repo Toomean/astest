@@ -61,7 +61,7 @@
         flex: 1;
 
         display: flex;
-        padding: 26px 25px;
+        padding: 27px 25px;
 
         color: #4A4A4A;
     }
@@ -71,7 +71,7 @@
     }
 
     &__time {
-        margin: 0 0 10px;
+        margin: 0 0 12px;
 
         font-size: 32px;
         line-height: (26 / 32);
@@ -98,8 +98,8 @@
     &__stops {
         position: relative;
 
-        padding: 0 0 6px 0;
-        margin: 0 0 0 -8px;
+        padding: 0 0 8px 0;
+        margin: 0 14px 0 -7px;
         border-bottom: 1px solid #D2D5D6;
 
         color: #8B9497;

@@ -6,6 +6,7 @@ import NumberFormat from 'react-number-format';
 import './Ticket.scss';
 import airlineLogo from 'assets/ta.png';
 import plural from 'plural-ru';
+import moment from 'moment';
 
 const ticket = ( props ) => {
     const { ticket } = props;
@@ -15,6 +16,8 @@ const ticket = ( props ) => {
     const destinationCity = [ ticket.destination_name, ticket.destination ]
         .filter(n => n)
         .join(', ');
+    const departureDate = moment( new Date( ticket.departure_date ) ).format('DD MMM YYYY, dd');
+    const arrivalDate = moment( new Date( ticket.arrival_date ) ).format('DD MMM YYYY, dd');
 
     return (
         <section className="Ticket">
@@ -36,7 +39,7 @@ const ticket = ( props ) => {
                 <div className="Ticket__origin">
                     <div className="Ticket__time">{ ticket.departure_time }</div>
                     <div className="Ticket__city">{ originCity }</div>
-                    <div className="Ticket__date">{ ticket.departure_date }</div>
+                    <div className="Ticket__date">{ departureDate }</div>
                 </div>
                 <div className="Ticket__path">
                     <div className="Ticket__stops">{ plural( ticket.stops , '%d пересадка', '%d пересадки', '%d пересадок') }</div>
@@ -44,7 +47,7 @@ const ticket = ( props ) => {
                 <div className="Ticket__destination">
                     <div className="Ticket__time">{ ticket.arrival_time }</div>
                     <div className="Ticket__city">{ destinationCity }</div>
-                    <div className="Ticket__date">{ ticket.arrival_date }</div>
+                    <div className="Ticket__date">{ arrivalDate }</div>
                 </div>
             </div>
         </section>
