@@ -1,5 +1,17 @@
+
+html {
+    font: 100% 'Open Sans', Helvetica, sans-serif;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    background: #F3F7FA;
+}
+
+* {
+    box-sizing: border-box;
+
+    &::before,
+    &::after {
+        box-sizing: inherit;
+    }
 }

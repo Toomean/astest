@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Main from '../components/Main/Main';
-import Header from '../components/Header/Header';
-import Aside from '../components/Aside/Aside';
+import Main from '../../components/Main/Main';
+import Header from '../../components/Header/Header';
+import Aside from '../../components/Aside/Aside';
+
+import ticketsJSON from '../../tickets.json';
 
 class App extends Component {
   render() {
@@ -12,7 +14,7 @@ class App extends Component {
         <Header />
         <div className="App__wrapper">
           <Aside />
-          <Main />
+          <Main tickets={ ticketsJSON.tickets }/>
         </div>
       </div>
     );

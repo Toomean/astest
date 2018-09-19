@@ -1,10 +1,11 @@
 
 import React, { Component } from 'react';
+import './Aside.scss';
 
 class Aside extends Component {
     render () {
         return (
-            <aside>Aside</aside>
+            <aside className="Aside">Aside</aside>
         );
     }
 }

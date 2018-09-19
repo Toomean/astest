@@ -1,0 +1,16 @@
+
+.Header {
+    padding: 50px 0;
+
+    &__logo {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        border-radius: 50%;
+
+        background: no-repeat center url(../../assets/logo.svg);
+        background-size: 105% 105%;
+
+        box-shadow: 0 8px 11px 0 rgba( 55, 104, 142, 0.25 );
+    }
+}
