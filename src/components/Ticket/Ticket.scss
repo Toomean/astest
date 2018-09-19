@@ -1,0 +1,127 @@
+
+.Ticket {
+    display: flex;
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    box-shadow: 0 1px 4px rgba(#5B89A4, .25);
+
+    &:not(:first-child) {
+        margin: 20px 0 0;
+    }
+
+    &__header {
+        width: 200px;
+        padding: 25px 20px;
+        border-right: 1px solid #ECEFF1;
+
+        text-align: center;
+    }
+
+    &__airline {
+        margin: 0 0 20px;
+
+        text-align: center;
+
+        & > img {
+            width: 120px;
+        }
+    }
+
+    &__button {
+        transition: background-color .2s, box-shadow .2s;
+
+        outline: none;
+
+        width: 100%;
+        padding: 6px;
+        border: none;
+        border-radius: 5px;
+
+        color: #ffffff;
+        font-size: 16px;
+        line-height: (22 / 16);
+
+        background: #FF6D00;
+
+        box-shadow: 0 1px 0 0 #D64D08, 0 2px 1px 0 rgba(#5B89A4, .25);
+
+        cursor: pointer;
+
+        &:hover {
+            background: #FF8124;
+
+            box-shadow: 0 1px 0 0 #F7661D, 0 1px 5px 0 rgba(#000000, .25);
+        }
+    }
+
+
+    &__content {
+        flex: 1;
+
+        display: flex;
+        padding: 26px 25px;
+
+        color: #4A4A4A;
+    }
+
+    &__destination {
+        text-align: right;
+    }
+
+    &__time {
+        margin: 0 0 10px;
+
+        font-size: 32px;
+        line-height: (26 / 32);
+    }
+
+    &__city {
+        font-size: 12px;
+        line-height: ( 18 / 12 );
+        font-weight: 600;
+    }
+
+    &__date {
+        color: #8B9497;
+
+        font-size: 12px;
+        line-height: ( 18 / 12 );
+    }
+
+
+    &__path {
+        flex: 1;
+    }
+
+    &__stops {
+        position: relative;
+
+        padding: 0 0 6px 0;
+        margin: 0 0 0 -8px;
+        border-bottom: 1px solid #D2D5D6;
+
+        color: #8B9497;
+
+        font-size: 10px;
+        line-height: ( 12 / 10 );
+        text-transform: uppercase;
+        text-align: center;
+
+        &::after {
+            content: '';
+
+            transform: translate(0, -50%);
+
+            position: absolute;
+            top: 100%;
+            right: 0;
+
+            width: 14px;
+            height: 16px;
+
+            background: no-repeat right center url(../../assets/plane.svg) #ffffff;
+        }
+    }
+}
