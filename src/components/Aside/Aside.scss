@@ -1,7 +1,21 @@
 
 .Aside {
-    padding: 50px 10px;
+    padding: 15px;
     border-radius: 5px;
 
     background: #fff;
+
+    &__heading {
+        margin: 0 0 11px;
+
+        font-size: 12px;
+        line-height: (19 / 12);
+        letter-spacing: .5px;
+        font-weight: 500;
+        text-transform: uppercase;
+
+        &:not(:first-child) {
+            margin: 16px 0 11px;
+        }
+    }
 }

@@ -1,0 +1,44 @@
+
+.CurrencySwitch {
+    $bl: '.CurrencySwitch';
+
+    display: flex;
+
+    width: 100%;
+
+    &__button {
+        transition: border-color .2s, background-color .2s, color .2s;
+
+        flex: 1;
+        padding: 9px;
+        margin: 0 -1px 0 0;
+        border: 1px solid #D2D5D6;
+
+        color: #2196F3;
+        text-align: center;
+
+        cursor: pointer;
+
+        &:first-child {
+            border-radius: 5px 0 0 5px;
+        }
+
+        &:last-child {
+            border-radius: 0 5px 5px 0;
+        }
+
+        &:not(#{$bl}__button--active):hover {
+            position: relative;
+            border-color: #2196F3;
+            background: #F2FCFF;
+        }
+
+        &--active {
+            border-color: #2196F3;
+
+            color: #ffffff;
+            background: #2196F3;
+            cursor: default;
+        }
+    }
+}
