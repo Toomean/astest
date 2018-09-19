@@ -1,0 +1,13 @@
+
+.App {
+  
+}
+
+.App__wrapper {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 232px 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 0px 20px;
+  grid-template-areas: ". .";
+}
