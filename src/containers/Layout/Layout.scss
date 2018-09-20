@@ -1,0 +1,13 @@
+
+.Layout {
+    display: grid;
+    max-width: 818px;
+    height: 100%;
+    padding: 0 0 20px;
+    margin: 0 auto;
+
+    grid-template-columns: 232px 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 0px 20px;
+    grid-template-areas: ". .";
+}

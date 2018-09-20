@@ -1,15 +1,13 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import Tickets from '../Tickets/Tickets';
 
-class Main extends Component {
-    render () {
-        return (
-            <main>
-                <Tickets tickets={ this.props.tickets }/>
-            </main>
-        );
-    }
-}
+const main = ( props ) =>  {
+    return (
+        <main>
+            <Tickets tickets={ props.tickets }/>
+        </main>
+    );
+};
 
-export default Main;
+export default main;

@@ -5,7 +5,7 @@ import 'normalize.css';
 import './index.scss';
 import 'moment/locale/ru';
 
-import App from './containers/App/App';
+import App from './App';
 
 import registerServiceWorker from './registerServiceWorker';
 
