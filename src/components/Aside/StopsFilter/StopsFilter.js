@@ -1,9 +1,8 @@
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import CheckboxItem from 'components/CheckboxItem/CheckboxItem';
-import Aux from 'hoc/Aux';
 import { AppContext } from 'containers/Layout/Layout';
 
 import plural from 'plural-ru';
@@ -36,7 +35,7 @@ const stopsFilter = ( props ) => {
         } );
 
     return (
-        <Aux>
+        <Fragment>
             <AppContext.Consumer>
                 { state => <CheckboxItem 
                     title="Все"
@@ -47,7 +46,7 @@ const stopsFilter = ( props ) => {
             </AppContext.Consumer>
 
             { generatedCheckboxes }
-        </Aux>
+        </Fragment>
     );
 };
 

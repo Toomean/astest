@@ -1,8 +1,7 @@
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './Aside.scss';
 
-import Aux from 'hoc/Aux';
 import AsideGroup from './AsideGroup/AsideGroup';
 import CurrencySwitch from './CurrencySwitch/CurrencySwitch';
 import StopsFilter from './StopsFilter/StopsFilter';
@@ -33,7 +32,7 @@ class Aside extends Component {
         ].join(' ');
 
         return (
-            <Aux>
+            <Fragment>
                 <button
                     className="Aside__button"
                     onClick={ this.toggleAside }>{ this.state.asideShown ? '✕' : '☰'  }</button>
@@ -50,7 +49,7 @@ class Aside extends Component {
                         </AppContext.Consumer>
                     </AsideGroup>            
                 </aside>
-            </Aux>
+            </Fragment>
         );
     }
 };

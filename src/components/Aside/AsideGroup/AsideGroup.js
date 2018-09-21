@@ -1,14 +1,13 @@
 
-import React from 'react';
-import Aux from 'hoc/Aux';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 const asideGroup = ( props ) => {
     return (
-        <Aux>
+        <Fragment>
             <div className="Aside__heading">{ props.title }</div>
             { props.children }
-        </Aux>
+        </Fragment>
     );
 };
 
