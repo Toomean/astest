@@ -6,8 +6,6 @@ import AsideGroup from './AsideGroup/AsideGroup';
 import CurrencySwitch from './CurrencySwitch/CurrencySwitch';
 import StopsFilter from './StopsFilter/StopsFilter';
 
-import { AppContext } from 'containers/Layout/Layout';
-
 class Aside extends Component {
 
     constructor( props ) {
@@ -25,7 +23,6 @@ class Aside extends Component {
     }
 
     render () {
-
         const asideClasses = [
             'Aside',
             this.state.asideShown ? 'Aside--opened' : null,
@@ -35,16 +32,17 @@ class Aside extends Component {
             <Fragment>
                 <button
                     className="Aside__button"
-                    onClick={ this.toggleAside }>{ this.state.asideShown ? '✕' : '☰'  }</button>
+                    onClick={ this.toggleAside }>
+                    { this.state.asideShown ? '✕' : '☰'  }
+                </button>
+
                 <aside className={ asideClasses }>
                     <AsideGroup title="Валюта">
                         <CurrencySwitch />
                     </AsideGroup>
     
                     <AsideGroup title="Количество пересадок">
-                        <AppContext.Consumer>
-                            { state => <StopsFilter stopsFilter={ state.stopsFilter }  /> }
-                        </AppContext.Consumer>
+                        <StopsFilter />
                     </AsideGroup>            
                 </aside>
             </Fragment>

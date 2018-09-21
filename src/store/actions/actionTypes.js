@@ -9,4 +9,6 @@ export const CHANGE_CURRENCY = 'CHANGE_CURRENCY';
 export const SET_CURRENCIES = 'SET_CURRENCY';
 
 // Tickets action types
+export const SET_STOPS = 'SET_STOPS';
 export const SET_TICKETS = 'SET_TICKETS';
+export const FILTER_TICKETS = 'FILTER_TICKETS';

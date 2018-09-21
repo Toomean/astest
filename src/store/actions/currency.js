@@ -3,9 +3,6 @@ import { CHANGE_CURRENCY, SET_CURRENCIES } from './actionTypes';
 import axios from 'axios';
 
 export const changeCurrency = ( currencyKey ) => {
-
-    console.log( 'Key: ', currencyKey )
-
     return {
         type        : CHANGE_CURRENCY,
         currencyKey : currencyKey,
@@ -30,8 +27,8 @@ export const getCurrencies = () => {
                 && response.data
                 && response.data.Valute;
 
-            currencies.EUR = ( EUR && EUR.Value ) || currencies.EUR;
-            currencies.USD = ( USD && USD.Value ) || currencies.USD;
+            currencies.EUR.value = ( EUR && EUR.Value ) || currencies.EUR;
+            currencies.USD.value = ( USD && USD.Value ) || currencies.USD;
 
             dispatch( setCurrencies( currencies ) );
         }
@@ -39,4 +36,4 @@ export const getCurrencies = () => {
             console.log( error );
         }
     }
-}
+};

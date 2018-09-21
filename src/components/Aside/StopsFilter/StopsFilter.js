@@ -1,9 +1,9 @@
 
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { changeFilter, changeFilterOnly, changeAllStops } from 'store/actions/tickets';
 
 import CheckboxItem from 'components/CheckboxItem/CheckboxItem';
-import { AppContext } from 'containers/Layout/Layout';
 
 import plural from 'plural-ru';
 
@@ -22,36 +22,41 @@ const stopsFilter = ( props ) => {
             );
 
             return (
-                <AppContext.Consumer  key={ value }>
-                    { state => <CheckboxItem
-                        title={ checkboxTitle }
-                        checked={ checked }
-                        changedOnly={ event => state.stopsFilterChangedOnlyHandler( stopsItem ) }
-                        changed={ event => state.stopsFilterChangeHandler( event, stopsItem ) } />
-                    }
-                </AppContext.Consumer>
-                
+                <CheckboxItem
+                    key={ value }
+                    title={ checkboxTitle }
+                    checked={ checked }
+                    changedOnly={ event => props.changeFilterOnly( stopsItem ) }
+                    changed={ event => props.changeFilter( event, stopsItem ) } />
             );
         } );
 
     return (
         <Fragment>
-            <AppContext.Consumer>
-                { state => <CheckboxItem 
-                    title="Все"
-                    checked={ state.allStopsChecked }
-                    cantBeCheckedOnly={ true }
-                    changed={ event => state.allStopsFilterChangeHandler( event ) } />
-                }
-            </AppContext.Consumer>
+            <CheckboxItem 
+                title="Все"
+                checked={ props.allStopsChecked }
+                cantBeCheckedOnly={ true }
+                changed={ event => props.changeAllStops( event ) } />
 
             { generatedCheckboxes }
         </Fragment>
     );
 };
 
-stopsFilter.propTypes = {
-    stops : PropTypes.arrayOf( PropTypes.object ) ,
+const mapStateToProps = state => {
+    return {
+        stopsFilter     : state.tickets.stopsFilter,
+        allStopsChecked : state.tickets.allStopsChecked,
+    }
 };
 
-export default stopsFilter;
+const mapDispatchToProps = dispatch => {
+    return {
+        changeFilter     : ( event, stopsItem ) => dispatch( changeFilter( event, stopsItem ) ),
+        changeFilterOnly : ( stopsItem ) => dispatch( changeFilterOnly( stopsItem ) ),
+        changeAllStops   : ( event ) => dispatch( changeAllStops( event ) ),
+    }
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )( stopsFilter );

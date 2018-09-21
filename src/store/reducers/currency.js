@@ -9,7 +9,6 @@ const CURRENCIES_DEFAULT = {
 };
 
 const initialState = {
-    currency   : 'RUB',
     currencies : {
         RUB : {
             value   : CURRENCIES_DEFAULT.RUB,
@@ -50,11 +49,11 @@ const reducer = ( state = initialState, action ) => {
             }
 
             return updateObject( state, {
-                currencies : currentCurrencies,
+                currencies      : currentCurrencies,
                 checkedCurrency : currentCurrencies[ currencyChecked ],
             } );
         case SET_CURRENCIES:
-            return updateObject( state, { curencies: action.currencies } );
+            return updateObject( state, { currencies: action.currencies } );
         default:
             return state;
     }
