@@ -1,5 +1,8 @@
 
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actionCreators from 'store/actions/currency';
+
 import './CurrencySwitch.scss';
 
 const currencySwitch = ( props ) => {
@@ -17,7 +20,7 @@ const currencySwitch = ( props ) => {
                 <div
                     className={ buttonClasses }
                     key={currencyKey}
-                    onClick={ event => props.switched( currencyKey ) }>
+                    onClick={ () => props.changeCurrency( currencyKey ) }>
                     { currencyKey }
                 </div>
             );
@@ -31,4 +34,18 @@ const currencySwitch = ( props ) => {
     );
 };
 
-export default currencySwitch;
+const mapStateToProps = state => {
+    return {
+        currencies      : state.currency.currencies,
+        currencyChecked : state.currency.checkedCurrency,
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getCurrencies: () => dispatch( actionCreators.getCurrencies() ),
+        changeCurrency: ( currencyKey ) => dispatch( actionCreators.changeCurrency( currencyKey ) )
+    }
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )( currencySwitch );

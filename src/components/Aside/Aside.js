@@ -38,9 +38,7 @@ class Aside extends Component {
                     onClick={ this.toggleAside }>{ this.state.asideShown ? '✕' : '☰'  }</button>
                 <aside className={ asideClasses }>
                     <AsideGroup title="Валюта">
-                        <AppContext.Consumer>
-                            { state => <CurrencySwitch currencies={ state.currencies } switched={ state.switchCurrencyHandler } /> }
-                        </AppContext.Consumer>
+                        <CurrencySwitch />
                     </AsideGroup>
     
                     <AsideGroup title="Количество пересадок">

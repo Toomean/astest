@@ -1,5 +1,8 @@
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actionCreators from 'store/actions/currency';
+
 import './Layout.scss';
 
 import Aside from 'components/Aside/Aside';
@@ -94,24 +97,6 @@ class Layout extends Component {
                 this.changeAllChecked( allChecked );
                 this.filterTickets();
             },
-
-            /* Provided methods of currency changer */
-            switchCurrencyHandler : ( newCurrency ) => {
-                const currentCurrencies = { ...this.state.currencies };
-
-                if ( currentCurrencies[ newCurrency ].checked ) {
-                    return;
-                }
-
-                for ( var key in currentCurrencies ) {
-                    currentCurrencies[ key ].checked = key === newCurrency ? true : false;
-                }
-
-                this.setState( {
-                    currencies : currentCurrencies,
-                    checkedCurrency : currentCurrencies[ newCurrency ],
-                } );
-            },
         }
     }
 
@@ -191,11 +176,17 @@ class Layout extends Component {
         } );
     }
 
-    componentDidMount () {
-        this.setCurrencies();
+    async componentDidMount () {
+        // this.setCurrencies();
+
+        await this.props.getCurrencies();
+
+        // console.log( await axios.get( 'tickets.json' ) )
     }
 
     render () {
+        console.log( 'Currencies: ', this.props.currencies );
+
         return (
             <div className="Layout">
                 <AppContext.Provider value={ this.state }>
@@ -207,4 +198,17 @@ class Layout extends Component {
     }
 };
 
-export default Layout;
+const mapStateToProps = state => {
+    return {
+        currencies: state.currency.currencies,
+        currencyChecked : state.currency.checkedCurrency,
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getCurrencies: () => dispatch( actionCreators.getCurrencies() ),
+    }
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )( Layout );
