@@ -1,12 +1,17 @@
 
 .Aside {
-    padding: 15px;
+    width: 232px;
+    padding: 15px 0;
+    margin: 0 20px 0 0;
     border-radius: 5px;
 
     background: #fff;
 
+    box-shadow: 0 1px 4px rgba(#5B89A4, .25);
+
     &__heading {
         margin: 0 0 11px;
+        padding: 0 15px;
 
         font-size: 12px;
         line-height: (19 / 12);
@@ -16,6 +21,55 @@
 
         &:not(:first-child) {
             margin: 16px 0 11px;
+        }
+    }
+
+    &__button {
+        outline: none;
+
+        display: none;
+
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        z-index: 90;
+
+        width: 55px;
+        height: 40px;
+        margin-left: 15px;
+        border-radius: 5px;
+
+        color: #ffffff;
+        font-size: 1.5em;
+
+        background: #2196f3;
+        box-shadow: 0 1px 0 0 #0a93bd, 0 1px 2px 0 rgba(0,0,0,.25);
+        
+        cursor: pointer;
+
+        @media ( max-width: 880px ) {
+            display: block;
+        }
+    }
+
+    @media ( max-width: 880px ) {
+        transition: visibility .2s, transform .2s;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 100;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        visibility: hidden;
+        transform: translateX(-100%);
+
+        &--opened {
+            visibility: visible;
+            transform: translateX(0)
         }
     }
 }

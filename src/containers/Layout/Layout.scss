@@ -1,13 +1,17 @@
 
 .Layout {
-    display: grid;
-    max-width: 818px;
-    height: 100%;
-    padding: 0 0 20px;
-    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
 
-    grid-template-columns: 232px 1fr;
-    grid-template-rows: 1fr;
-    grid-gap: 0px 20px;
-    grid-template-areas: ". .";
+    max-width: 818px;
+    margin: 0 auto;
+    padding: 0 20px 20px;
+
+    & > main {
+        flex: 1;
+    }
+
+    @media ( max-width: 880px ) {
+        padding: 90px 10px 0;
+    }
 }
