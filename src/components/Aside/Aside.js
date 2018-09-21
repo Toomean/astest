@@ -15,13 +15,13 @@ class Aside extends Component {
         super( props )
 
         this.state = {
-            asideOpened : false,
+            asideShown : false,
         };
     }
 
     toggleAside = () => {
         this.setState( {
-            asideOpened : !this.state.asideOpened,
+            asideShown : !this.state.asideShown,
         } );
     }
 
@@ -29,14 +29,14 @@ class Aside extends Component {
 
         const asideClasses = [
             'Aside',
-            this.state.asideOpened ? 'Aside--opened' : null,
+            this.state.asideShown ? 'Aside--opened' : null,
         ].join(' ');
 
         return (
             <Aux>
                 <button
                     className="Aside__button"
-                    onClick={ this.toggleAside }>{ this.state.asideOpened ? '✕' : '☰'  }</button>
+                    onClick={ this.toggleAside }>{ this.state.asideShown ? '✕' : '☰'  }</button>
                 <aside className={ asideClasses } >
                     <AsideGroup title="Валюта">
                         <AppContext.Consumer>
