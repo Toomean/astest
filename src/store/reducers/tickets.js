@@ -20,19 +20,22 @@ const reducer = ( state = initialState, action ) => {
 
     switch ( action.type ) {
         case SET_TICKETS:
+            const ticketsSet = [ ...action.tickets ]
+                .sort( ( next, prev ) => next.stops - prev.stops );
+
             return updateObject( state, {
-                tickets         : [ ...action.tickets ],
-                ticketsFiltered : [ ...action.tickets ],
+                tickets         : [ ...ticketsSet ],
+                ticketsFiltered : [ ...ticketsSet ],
             } );
         case FILTER_TICKETS:
             const stopsFilter = [ ...state.stopsFilter ]
                 .filter( stopFilterItem => stopFilterItem.checked )
                 .map( stopFilterItem => stopFilterItem.value );
 
-            const tickets = [ ...state.tickets ]
+            const ticketsCurrent = [ ...state.tickets ]
                 .filter( ticket => stopsFilter.includes( ticket.stops ) );
 
-            return updateObject( state, { ticketsFiltered : tickets } );
+            return updateObject( state, { ticketsFiltered : ticketsCurrent } );
         case SET_STOPS:
             return updateObject( state, { stopsFilter : action.stopsFilter } );
         case CHANGE_FILTER:
@@ -40,7 +43,7 @@ const reducer = ( state = initialState, action ) => {
         case CHANGE_ALL_STOPS:
             return updateObject( state, {
                 stopsFilter     : action.stopsFilter,
-                allStopsChecked : action.allStopsChecked, 
+                allStopsChecked : action.allStopsChecked,
             } );
         default:
             return state;
